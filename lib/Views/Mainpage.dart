@@ -15,7 +15,7 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     super.initState();
-    futurePosts = PostService().fetchPosts();
+    futurePosts = PostService().fetchPosts(context);
   }
 
   @override

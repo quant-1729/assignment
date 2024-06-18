@@ -51,10 +51,8 @@ class CustomCard extends StatelessWidget {
               ],
             ),
           ),
-
           // Card Image
           Image.network(post.image.isNotEmpty ? post.image[0] : 'https://via.placeholder.com/150'),
-
           Padding(
             padding:  EdgeInsets.only(left: 13, right: 15, top: 11, bottom: 12),
             child: ExpandableText(text: post.eventDescription)),

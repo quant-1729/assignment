@@ -1,4 +1,4 @@
-
+import 'dart:convert';
 
 class PostDTO {
   final String id;
@@ -18,6 +18,7 @@ class PostDTO {
   final int likes;
   final List<String> comments;
   final String createdAt;
+  final Map<String, dynamic> eventLocation;
 
   PostDTO({
     required this.id,
@@ -37,9 +38,9 @@ class PostDTO {
     required this.likes,
     required this.comments,
     required this.createdAt,
+    required this.eventLocation,
   });
 
-  // Factory constructor to create a PostDTO from a JSON map
   factory PostDTO.fromJson(Map<String, dynamic> json) {
     return PostDTO(
       id: json['_id'],
@@ -59,10 +60,10 @@ class PostDTO {
       likes: json['likes'],
       comments: List<String>.from(json['comments']),
       createdAt: json['createdAt'],
+      eventLocation: json['eventLocation'],
     );
   }
 
-  // Method to convert a PostDTO to a JSON map
   Map<String, dynamic> toJson() {
     return {
       '_id': id,
@@ -82,6 +83,7 @@ class PostDTO {
       'likes': likes,
       'comments': comments,
       'createdAt': createdAt,
+      'eventLocation': eventLocation,
     };
   }
 }
