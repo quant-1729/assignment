@@ -42,7 +42,7 @@ class PostService {
       else {
         print("No innernet connection");
         // If no internet, fetch posts from the database
-        List<PostDTO> posts = await dbservice.getPosts();
+        List<PostDTO> posts = await dbservice.getPostsfromdb();
         return posts;
       }
     }

@@ -17,6 +17,13 @@ final List<Map<String, dynamic>> samplePosts = [
     "likes": 10,
     "comments": [],
     "createdAt": "2024-06-19T12:00:00.000Z",
+    "eventLocation": {
+      "type": "Point",
+      "coordinates": [
+        28.559825,
+        77.196606
+      ]
+    }
   },
   {
     "id": "2",
@@ -36,6 +43,13 @@ final List<Map<String, dynamic>> samplePosts = [
     "likes": 5,
     "comments": [],
     "createdAt": "2024-06-18T15:00:00.000Z",
+    "eventLocation": {
+      "type": "Point",
+      "coordinates": [
+        28.559825,
+        77.196606
+      ]
+    }
   },
   {
     "id": "3",
@@ -55,6 +69,13 @@ final List<Map<String, dynamic>> samplePosts = [
     "likes": 15,
     "comments": [],
     "createdAt": "2024-06-17T10:00:00.000Z",
+    "eventLocation": {
+      "type": "Point",
+      "coordinates": [
+        28.559825,
+        77.196606
+      ]
+    }
   },
   {
     "id": "4",
@@ -74,6 +95,13 @@ final List<Map<String, dynamic>> samplePosts = [
     "likes": 20,
     "comments": [],
     "createdAt": "2024-06-16T14:00:00.000Z",
+    "eventLocation": {
+      "type": "Point",
+      "coordinates": [
+        28.559825,
+        77.196606
+      ]
+    }
   },
   {
     "id": "5",
@@ -93,5 +121,12 @@ final List<Map<String, dynamic>> samplePosts = [
     "likes": 8,
     "comments": [],
     "createdAt": "2024-06-15T16:00:00.000Z",
+    "eventLocation": {
+      "type": "Point",
+      "coordinates": [
+        28.559825,
+        77.196606
+      ]
+    }
   },
 ];
