@@ -30,86 +30,92 @@ class _MainPageState extends State<MainPage> {
           title: Text('DEMO APP'),
           actions: [Icon(Icons.shopping_cart)], // Right most icon
         ),
-        body: Column(
+        body: Stack(
           children: [
-            SizedBox(height: 2),
-            Container(
-              height: 67,
-              decoration: BoxDecoration(color: Colors.white),
-              padding: EdgeInsets.only(left: 16, right: 14.5, top: 10.5, bottom: 12.5),
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: TextField(
-                      textAlignVertical: TextAlignVertical.center,
-                      textAlign: TextAlign.start,
-                      decoration: InputDecoration(
-                        hintText: 'Search messages',
-                        hintStyle: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xFF99A2AD),
+            Column(
+              children: [
+                SizedBox(height: 2),
+                Container(
+                  height: 67,
+                  decoration: BoxDecoration(color: Colors.white),
+                  padding: EdgeInsets.only(left: 16, right: 14.5, top: 10.5, bottom: 12.5),
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: TextField(
+                          textAlignVertical: TextAlignVertical.center,
+                          textAlign: TextAlign.start,
+                          decoration: InputDecoration(
+                            hintText: 'Search messages',
+                            hintStyle: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                              color: Color(0xFF99A2AD),
+                            ),
+                            prefixIcon: Icon(Icons.search, size: 22, color: Color(0xFF99A2AD)), // Internal search icon
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                              borderSide: BorderSide.none,
+                            ),
+                            filled: true,
+                            fillColor: Color(0xFFEBF2FA),
+                          ),
                         ),
-                        prefixIcon: Icon(Icons.search, size: 22, color: Color(0xFF99A2AD)), // Internal search icon
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                          borderSide: BorderSide.none,
-                        ),
-                        filled: true,
-                        fillColor: Color(0xFFEBF2FA),
                       ),
-                    ),
+                      SizedBox(width: 10), // Spacing between text field and image icon
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(CupertinoIcons.slider_horizontal_3, size: 35, color: Color(0xFF0A66C2)),
+                      ), // Replace with your asset
+                    ],
                   ),
-                  SizedBox(width: 10), // Spacing between text field and image icon
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(CupertinoIcons.slider_horizontal_3, size: 35, color: Color(0xFF0A66C2)),
-                  ), // Replace with your asset
-                ],
+                ),
+                Expanded(child: fetchcard(context)),
+              ],
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                margin: EdgeInsets.all(16), // Distance from the bottom and sides
+                decoration: BoxDecoration(
+                  color: Colors.black,
+                  borderRadius: BorderRadius.circular(10), // Circular radius
+                  boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 10)],
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: BottomNavigationBar(
+                    backgroundColor: Colors.black,
+                    items: <BottomNavigationBarItem>[
+                      BottomNavigationBarItem(
+                        activeIcon: Icon(Icons.home, size: 32, color: Color(0xFF0A66C2)),
+                        icon: Icon(Icons.home, size: 32, color: Colors.white),
+                        label: 'Home',
+                      ),
+                      BottomNavigationBarItem(
+                        activeIcon: Icon(Icons.favorite, size: 32, color: Color(0xFF0A66C2)),
+                        icon: Icon(Icons.favorite, size: 32, color: Colors.white),
+                        label: 'Like',
+                      ),
+                      BottomNavigationBarItem(
+                        activeIcon: Icon(Icons.people, size: 32, color: Color(0xFF0A66C2)),
+                        icon: Icon(Icons.people, size: 32, color: Colors.white),
+                        label: 'People',
+                      ),
+                      BottomNavigationBarItem(
+                        activeIcon: Icon(Icons.save, size: 32, color: Color(0xFF0A66C2)),
+                        icon: Icon(Icons.save, size: 32, color: Colors.white),
+                        label: 'Saved',
+                      ),
+                    ],
+                    selectedItemColor: Color(0xFF0A66C2), // Active label text color
+                    unselectedItemColor: Colors.white, // Inactive label text color
+                    type: BottomNavigationBarType.fixed,
+                  ),
+                ),
               ),
             ),
-            Expanded(child: fetchcard(context)),
           ],
-        ),
-        bottomNavigationBar: Container(
-          margin: EdgeInsets.all(16), // Distance from the bottom and sides
-          decoration: BoxDecoration(
-            color: Colors.black,
-            borderRadius: BorderRadius.circular(10), // Circular radius
-            boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 10)],
-          ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: BottomNavigationBar(
-              backgroundColor: Colors.black,
-              // Your BottomNavigationBar items
-              items: <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
-                  activeIcon: Icon(Icons.home, size: 32, color: Color(0xFF0A66C2)),
-                  icon: Icon(Icons.home, size: 32, color: Colors.white),
-                  label: 'Home',
-                ),
-                BottomNavigationBarItem(
-                  activeIcon: Icon(Icons.favorite, size: 32, color: Color(0xFF0A66C2)),
-                  icon: Icon(Icons.favorite, size: 32, color: Colors.white),
-                  label: 'Like',
-                ),
-                BottomNavigationBarItem(
-                  activeIcon: Icon(Icons.people, size: 32, color: Color(0xFF0A66C2)),
-                  icon: Icon(Icons.people, size: 32, color: Colors.white),
-                  label: 'People',
-                ),
-                BottomNavigationBarItem(
-                  activeIcon: Icon(Icons.save, size: 32, color: Color(0xFF0A66C2)),
-                  icon: Icon(Icons.save, size: 32, color: Colors.white),
-                  label: 'Saved',
-                ),
-              ],
-              selectedItemColor: Color(0xFF0A66C2), // Active label text color
-              unselectedItemColor: Colors.white, // Inactive label text color
-              type: BottomNavigationBarType.fixed,
-            ),
-          ),
         ),
       ),
     );

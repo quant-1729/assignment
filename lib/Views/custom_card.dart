@@ -60,35 +60,8 @@ class CustomCard extends StatelessWidget {
           Divider(),
           Padding(
             padding:  EdgeInsets.only(top: 11, bottom: 15, left: 18, right: 21),
-            child: Row(
-              children: <Widget>[
-                IconWithCount(iconData: CupertinoIcons.hand_thumbsup, initialCount: post.likes, labelText: "Likes",onPressed:
-                (){
-                  // implementing the like logic
-                },),
-                Spacer(),
-                IconWithCount(iconData: Icons.mode_comment_outlined, initialCount: post.comments.length, labelText: "Comments", onPressed: (){
-                  //implementing the comment logic
-                },),
-                Spacer(),
-                // Making the share icon different
-                Row(
-                  children: [
-                    IconButton(
-                      icon: Icon(CupertinoIcons.arrow_turn_up_right),
-                      color: Colors.grey,
-                      onPressed: (){
-                        // Implementing the share logic
-
-                      }
-                    ),
-                    SizedBox(width: 2), // Space between the icon count and text
-                    Text("Share"),
-                  ],
-                )
-
-              ],
-            ),
+            child: Flexible(
+                child: CustomCardBottom( like_count: post.likes.toString(), comment_count: post.comments.toString())),
           ),
         ],
       ),
