@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:assignment/DTO/post_dto.dart';
 import 'package:assignment/Services/Dbservices/database_services.dart';
-class PostService {
+class ApiServices {
 
   Future<List<PostDTO>> fetchPostsfromapi(String url) async {
     final response = await http.get(Uri.parse(url));
