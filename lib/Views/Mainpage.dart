@@ -1,3 +1,6 @@
+import 'package:assignment/Views/like_page.dart';
+import 'package:assignment/Views/people_page.dart';
+import 'package:assignment/Views/saved_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:assignment/Services/api_services.dart';
@@ -20,6 +23,9 @@ class _MainPageState extends State<MainPage> {
   final List<String> categories = ['All', 'Sports', 'Appliances', 'People', 'Clothing'];
   // Declaring the initial category as ALL as default
   String selectedCategory = 'All';
+
+
+
 
   @override
   void initState() {
@@ -66,100 +72,54 @@ class _MainPageState extends State<MainPage> {
             ), // Right most icon
           ],
         ),
-        body: Stack(
+        body: Column(
           children: [
-            Column(
-              children: [
-                SizedBox(height: 2),
-                Container(
-                  height: 67,
-                  decoration: BoxDecoration(color: Colors.white),
-                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10.5),
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: TextField(
-                          controller: searchController,
-                          onChanged: (value) {
-                            setState(() {
-                              // To update UI based on text input
-                            });
-                          },
-                          textAlignVertical: TextAlignVertical.center,
-                          textAlign: TextAlign.start,
-                          decoration: InputDecoration(
-                            hintText: 'Search messages',
-                            hintStyle: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xFF99A2AD),
-                            ),
-                            prefixIcon: Icon(Icons.search, size: 22, color: Color(0xFF99A2AD)), // Internal search icon
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30.0),
-                              borderSide: BorderSide.none,
-                            ),
-                            filled: true,
-                            fillColor: Color(0xFFEBF2FA),
-                          ),
+            SizedBox(height: 2),
+            Container(
+              height: 67,
+              decoration: BoxDecoration(color: Colors.white),
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10.5),
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: TextField(
+                      controller: searchController,
+                      onChanged: (value) {
+                        setState(() {
+                          // To update UI based on text input
+                        });
+                      },
+                      textAlignVertical: TextAlignVertical.center,
+                      textAlign: TextAlign.start,
+                      decoration: InputDecoration(
+                        hintText: 'Search messages',
+                        hintStyle: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFF99A2AD),
                         ),
+                        prefixIcon: Icon(Icons.search, size: 22, color: Color(0xFF99A2AD)), // Internal search icon
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                          borderSide: BorderSide.none,
+                        ),
+                        filled: true,
+                        fillColor: Color(0xFFEBF2FA),
                       ),
-                      SizedBox(width: 10), // Spacing between text field and image icon
-                      IconButton(
-                        onPressed: () {
-                          // Implementing the categories feature through this icon
-                          showCategorySelectionMenu(context);
-                        },
-                        icon: Icon(CupertinoIcons.slider_horizontal_3, size: 35, color: Color(0xFF0A66C2)),
-                      ), // Replace with your asset
-                    ],
+                    ),
                   ),
-                ),
-                Expanded(child: fetchCard(context)), // Flexible to Expanded
-              ],
-            ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                margin: EdgeInsets.all(16), // Distance from the bottom and sides
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.circular(10), // Circular radius
-                  boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 10)],
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: BottomNavigationBar(
-                    backgroundColor: Colors.black,
-                    items: <BottomNavigationBarItem>[
-                      BottomNavigationBarItem(
-                        activeIcon: Icon(Icons.home, size: 32, color: Color(0xFF0A66C2)),
-                        icon: Icon(Icons.home, size: 32, color: Colors.white),
-                        label: 'Home',
-                      ),
-                      BottomNavigationBarItem(
-                        activeIcon: Icon(Icons.favorite, size: 32, color: Color(0xFF0A66C2)),
-                        icon: Icon(Icons.favorite, size: 32, color: Colors.white),
-                        label: 'Like',
-                      ),
-                      BottomNavigationBarItem(
-                        activeIcon: Icon(Icons.people, size: 32, color: Color(0xFF0A66C2)),
-                        icon: Icon(Icons.people, size: 32, color: Colors.white),
-                        label: 'People',
-                      ),
-                      BottomNavigationBarItem(
-                        activeIcon: Icon(Icons.save, size: 32, color: Color(0xFF0A66C2)),
-                        icon: Icon(Icons.save, size: 32, color: Colors.white),
-                        label: 'Saved',
-                      ),
-                    ],
-                    selectedItemColor: Color(0xFF0A66C2), // Active label text color
-                    unselectedItemColor: Colors.white, // Inactive label text color
-                    type: BottomNavigationBarType.fixed,
-                  ),
-                ),
+                  SizedBox(width: 10), // Spacing between text field and image icon
+                  IconButton(
+                    onPressed: () {
+                      // Implementing the categories feature through this icon
+                      showCategorySelectionMenu(context);
+                    },
+                    icon: Icon(CupertinoIcons.slider_horizontal_3, size: 35, color: Color(0xFF0A66C2)),
+                  ), // Replace with your asset
+                ],
               ),
             ),
+            Expanded(child: fetchCard(context)), // Flexible to Expanded
           ],
         ),
       ),
