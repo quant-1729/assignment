@@ -155,7 +155,7 @@ class _LikeiconState extends State<Likeicon> {
             });
           },
         ),
-        Text(widget.likecount, style: TextStyle(
+        Text(widget.likecount.toString(), style: TextStyle(
           fontWeight: FontWeight.w400,
           fontSize: 14,
         )),

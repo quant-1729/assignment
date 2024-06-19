@@ -60,7 +60,7 @@ class CustomCard extends StatelessWidget {
           Padding(
             padding:  EdgeInsets.only(top: 11, bottom: 15, left: 18, right: 21),
             child: Flexible(
-                child: CustomCardBottom( like_count: post.likes.toString(), comment_count: post.comments.toString())),
+                child: CustomCardBottom( like_count: post.likes.toString(), comment_count: post.comments.length.toString())),
           ),
         ],
       ),
