@@ -2,6 +2,7 @@ import 'package:assignment/Services/api_services.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:assignment/Views/custom_card.dart';
+import 'package:http/http.dart';
 import '../DTO/post_dto.dart'; // Importing the separate class for cards
 
 class MainPage extends StatefulWidget {
@@ -11,6 +12,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   late Future<List<PostDTO>> futurePosts;
+  TextEditingController search_controller= TextEditingController();
 
   @override
   void initState() {
@@ -43,6 +45,13 @@ class _MainPageState extends State<MainPage> {
                     children: <Widget>[
                       Expanded(
                         child: TextField(
+                          controller: search_controller,
+                          onChanged: (value){
+                            setState(() {
+                              // So as to change the UI when user types something in the textfield
+                            });
+
+                          },
                           textAlignVertical: TextAlignVertical.center,
                           textAlign: TextAlign.start,
                           decoration: InputDecoration(
@@ -132,7 +141,17 @@ class _MainPageState extends State<MainPage> {
         } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
           return Center(child: Text('No posts found'));
         } else {
-          final posts = snapshot.data!;
+          var posts = snapshot.data!;
+
+          // Implementing the filer logic
+          if(search_controller.text.isNotEmpty){
+            posts = posts.where((posts)=> 
+            // filetring by title
+              posts.title.toLowerCase().contains(search_controller.text.toLowerCase()) || 
+              posts.userId.toLowerCase().contains(search_controller.text.toLowerCase()) ||
+                posts.eventCategory.toLowerCase().contains(search_controller.text.toLowerCase())
+            ).toList(); 
+          }
           return ListView.builder(
             itemCount: posts.length,
             itemBuilder: (context, index) {
