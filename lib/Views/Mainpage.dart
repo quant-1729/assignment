@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:assignment/Services/api_services.dart';
 import 'package:assignment/Views/custom_card.dart';
-import '../DTO/post_dto.dart'; // Importing the separate class for cards
+import '../DTO/post_dto.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -24,17 +24,14 @@ class _MainPageState extends State<MainPage> {
   // Declaring the initial category as ALL as default
   String selectedCategory = 'All';
 
-
-
-
   @override
   void initState() {
     super.initState();
-    futurePosts = ApiServices().fetchPosts(context); // Corrected to ApiService
+    futurePosts = ApiServices().fetchPosts(context);
   }
 
-   showCategorySelectionMenu(BuildContext context) {
-     return showModalBottomSheet(
+  showCategorySelectionMenu(BuildContext context) {
+    return showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
         return ListView(
@@ -63,13 +60,13 @@ class _MainPageState extends State<MainPage> {
         backgroundColor: Color(0xFFC6C4C4),
         appBar: AppBar(
           backgroundColor: Color(0xFFF9FAFB),
-          leading: Icon(Icons.menu), // Three line icon
+          leading: Icon(Icons.menu),
           title: Text('DEMO APP'),
           actions: [
             IconButton(
               onPressed: () {},
               icon: Icon(Icons.shopping_cart),
-            ), // Right most icon
+            ),
           ],
         ),
         body: Column(
@@ -115,7 +112,7 @@ class _MainPageState extends State<MainPage> {
                       showCategorySelectionMenu(context);
                     },
                     icon: Icon(CupertinoIcons.slider_horizontal_3, size: 35, color: Color(0xFF0A66C2)),
-                  ), // Replace with your asset
+                  ),
                 ],
               ),
             ),

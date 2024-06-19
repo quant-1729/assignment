@@ -38,7 +38,7 @@ class _CustomCardBottomState extends State<CustomCardBottom> {
           children: [
             Expanded(child: TextInput("Write your comment", textEditingController)),
             SendIcon(20, (){
-              //implement the send logic
+              // send logic
             })
           ],
         )

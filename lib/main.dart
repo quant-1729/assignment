@@ -80,8 +80,8 @@ class _MyAppState extends State<MyApp> {
                         label: 'Saved',
                       ),
                     ],
-                    selectedItemColor: Color(0xFF0A66C2), // Active label text color
-                    unselectedItemColor: Colors.white, // Inactive label text color
+                    selectedItemColor: Color(0xFF0A66C2),
+                    unselectedItemColor: Colors.white,
                     type: BottomNavigationBarType.fixed,
                     currentIndex: _selectedIndex,
                     onTap: _onItemTapped,

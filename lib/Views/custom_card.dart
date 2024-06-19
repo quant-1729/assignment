@@ -1,4 +1,3 @@
-// custom_card.dart
 import 'package:assignment/Views/custom-card_bottom.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
