@@ -33,9 +33,13 @@ class _CustomCardBottomState extends State<CustomCardBottom> {
             })
           ],
         ),
-        if (showcommentfield) Row(
+        if (showcommentfield)
+          Row(
           children: [
-            TextInput("Write your comment", textEditingController)
+            Expanded(child: TextInput("Write your comment", textEditingController)),
+            SendIcon(20, (){
+              //implement the send logic
+            })
           ],
         )
 
@@ -83,28 +87,45 @@ class _CustomCardBottomState extends State<CustomCardBottom> {
   }
 
   Widget TextInput(String hint, TextEditingController messageController) {
-    return Expanded(
-      child: Container(
-        padding: EdgeInsets.all(8.0), // Optional padding
-        child: TextField(
-          controller: messageController,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide(color: Color(0xFFF5F5F6)),
-            ),
-            fillColor: Color(0xFFF5F5F6),
-            filled: true,
-            hintText: hint, // Use the provided hint parameter
-            hintStyle: TextStyle(
-              color: Colors.grey,
-              fontSize: 14,
-            ),
+    return Container(
+      padding: EdgeInsets.all(8.0), // Optional padding
+      child: TextField(
+        controller: messageController,
+        decoration: InputDecoration(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(color: Color(0xFFF5F5F6)),
+          ),
+          fillColor: Color(0xFFF5F5F6),
+          filled: true,
+          hintText: hint, // Use the provided hint parameter
+          hintStyle: TextStyle(
+            color: Colors.grey,
+            fontSize: 14,
           ),
         ),
       ),
     );
   }
+  Widget SendIcon(double radius, VoidCallback onTap) {
+    return GestureDetector(
+      onTap: onTap,
+      child: CircleAvatar(
+        backgroundColor: Colors.grey,
+        radius: radius,
+        child: Center(
+          child: Icon(
+            CupertinoIcons.paperplane_fill,
+            color: Colors.white,
+            size: radius * 1.2,
+          ),
+        ),
+      ),
+    );
+  }
+
+
+
 
 }
 
